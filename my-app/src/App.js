@@ -4,6 +4,9 @@ import NavBar from "./components/NavBar.js"
 import FuncButton from './components/FuncButton';
 import FuncDiv from './components/FuncDiv';
 import ClassButton from './components/ClassButton';
+import ClassDiv from './components/ClassDiv';
+import Button from './components/Button';
+import Hero from './components/Hero';
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
       <FuncDiv title="Kazkas" subtitle="KazkasSub" buttonText="text of button"/>
       <FuncDiv title="Kazkas" subtitle="KazkasSub" buttonText="text of button"/>
       <ClassButton title="react button"/>
+      <ClassDiv title="class div" subtitle="class" buttonText="classdiv text"/>
+      <Button>Spausk cia dawaj</Button>
+      <Hero title="Info Hero" subtitle="Info subtitle" color="blue"/>
     </div>
   );
 }
