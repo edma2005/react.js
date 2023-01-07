@@ -1,0 +1,7 @@
+.styled-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: tomato;
+    color: white;
+    font-size: 14px;
+}
