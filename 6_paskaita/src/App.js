@@ -4,7 +4,6 @@ import TodoApp from './TodoApp'
 import ShopingListApp from './ShopingListApp'
 import FormAppTask from './FormAppTask'
 import "./App.css"
-import { Routes, Route} from "react-router-dom"
 
 function App() {
   return (
