@@ -1,0 +1,23 @@
+h2 {
+  margin: 0;
+  color: black;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: yellowgreen;
+  padding: 30px;
+  box-shadow: black 0px 1px 20px;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  margin-right: 50px;
+}
+nav ul li {
+  color: black;
+  cursor: pointer;
+}/*# sourceMappingURL=TopBar.css.map */

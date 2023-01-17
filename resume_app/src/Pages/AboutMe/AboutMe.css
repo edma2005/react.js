@@ -1,0 +1,21 @@
+body h3 {
+  text-align: center;
+}
+body .background {
+  background-image: url(../../Components/Images/4884841.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-width: 98vw;
+  min-height: 98vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+body .background p {
+  color: white;
+  font-weight: 800;
+  font-size: larger;
+}/*# sourceMappingURL=AboutMe.css.map */

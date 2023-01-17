@@ -1,0 +1,24 @@
+.weather-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    background-color: aqua;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.weather-city {
+    font-size: 1.2rem;
+}
+
+.weather-date {
+    font-size: 0.8rem;
+    margin-bottom: 16px;
+    margin-top: 5px;
+}
+
+.weather-temp, .weather-wind {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
