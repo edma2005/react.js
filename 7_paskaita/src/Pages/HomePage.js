@@ -4,6 +4,7 @@ import TopBar from '../Components/TopBar'
 import { getCars } from '../API/cars'
 import { Link } from "react-router-dom";
 import WeatherCard from '../Components/WeatherCard/WeatherCard';
+import Button from '../Components/Button';
 
 function HomePage() {
   const cars = getCars()
@@ -41,6 +42,7 @@ function HomePage() {
       </ul>
         {weather && <WeatherCard weather={weather}/>}
       </div>
+      <Button/>
     </div>
   )
 }
