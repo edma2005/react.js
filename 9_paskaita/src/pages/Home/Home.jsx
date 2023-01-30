@@ -4,7 +4,6 @@ import { getUniqueArrayItems } from '../../utils/array'
 import styled from 'styled-components'
 import ProductCategory from './ProductCategory'
 
-
 const Home = () => {
   const { products } = useContext(ProductContext)
   const uniqCategories = getUniqueArrayItems(products.map((product) => product.type))
@@ -19,24 +18,30 @@ const Home = () => {
   console.log(products)
 
   return (
-    <div>
+    <Container>
       <ProductContainer>
         {categories.map((category) => (
-          <ProductCategory key={category.name} name={category.name} image={JSON.parse(category.image)[0]}/>
+          <ProductCategory 
+          key={category.name} 
+          name={category.name} 
+          image={category.image[0]}
+          />
         ))}
       </ProductContainer>
-    </div>
+    </Container>
   )
 }
 
 export default Home
 
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100vh;
+`
+
 const ProductContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: #fafafa;
-  /* background: #ffe259;
-  background: -webkit-linear-gradient(to left, #ffa751, #ffe259);
-  background: linear-gradient(to left, #ffa751, #ffe259); */
-  `
+`

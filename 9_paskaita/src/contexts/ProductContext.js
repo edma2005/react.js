@@ -7,13 +7,21 @@ const ProductProvider = ({children}) => {
     const [products, setProducts] = useState([])
     const [isLoading, setIsLoading] = useState(false)
 
+    const transformData = (products) => {
+      return products.map(product => ({
+        ...product,
+         picUrl: JSON.parse(product.picUrl), 
+         size: JSON.parse(product.size)}))
+
+    }
+
     useEffect(() => {
         setIsLoading(true)
         axios
         .get("https://testapi.io/api/lukasnvc/resource/NewEshop")
         .then(response => {
-            console.log(response.data.data)
-            setProducts(response.data.data)
+          const tranformedData = transformData(response.data.data)
+            setProducts(tranformedData)
             setIsLoading(false)
         })
         .catch(error => {
