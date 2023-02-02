@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import { lightBorderColor } from "../consts/colors"
 import SearchBar from '../components/SearchBar/SearchBar'
+import { Link } from 'react-router-dom'
+import { HOME_PATH } from '../routes/const'
 
 const Topbar = () => {
   return ( 
@@ -8,10 +10,12 @@ const Topbar = () => {
     <NavigationItem>
       Categories
     </NavigationItem>
-    <SearchBar/>
-    <Logo>
+    <Logo 
+    as={Link} 
+    to={HOME_PATH}>
       EdmaShop
     </Logo>
+    <SearchBar/>
   </Container>
   )
 }
@@ -24,6 +28,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid ${lightBorderColor};
+  background-color: #ffffff;
 `
 
 const NavigationItem = styled.div`
@@ -33,4 +38,6 @@ const NavigationItem = styled.div`
 const Logo = styled.div`
   font-weight: 700;
   font-size: 28px;
+  text-decoration: none;
+  color: inherit;
 `

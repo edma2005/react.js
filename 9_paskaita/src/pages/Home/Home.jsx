@@ -35,9 +35,9 @@ const Home = () => {
 export default Home
 
 const Container = styled.div`
-  display: flex;
-  align-items: center;
   height: 100vh;
+  display: flex;
+  align-items: flex-start;
 `
 
 const ProductContainer = styled.div`

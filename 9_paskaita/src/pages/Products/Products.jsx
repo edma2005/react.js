@@ -1,17 +1,19 @@
 import styled from 'styled-components'
 import Select from 'react-select'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate, generatePath } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import { ProductContext } from '../../contexts/ProductContext'
 import { capitalizeFirstLetter } from '../../utils/string'
 import { getUniqueArrayItems } from '../../utils/array'
 import { screenSize } from '../../consts/mediaQueries'
 import { lightBorderColor } from '../../consts/colors'
+import { PRODUCT_PATH } from '../../routes/const'
 
 const Products = () => {
     const {category} = useParams()
     const {products} = useContext(ProductContext)
     const [selectedColors, setSelectedColors] = useState([])
+    const navigate = useNavigate()
     
     const isCategory = (product) => product.type === category;
     const categoryProducts = products.filter(isCategory) 
@@ -30,6 +32,11 @@ const Products = () => {
     ? filteredByColorProducts
     : categoryProducts
 
+    const navigateToProduct = (category, productId) => {
+      const path = generatePath(PRODUCT_PATH, {category, productId})
+      navigate(path)
+    }
+
   return (
   <div>
     <FiltersContainer>
@@ -45,7 +52,7 @@ const Products = () => {
     </FiltersContainer>
     <ProductContainer>
       {filteredProducts.map(product => 
-      <ProductItem key={product.id}>
+      <ProductItem key={product.id} onClick={() => navigateToProduct(category, product.id)}>
         <img src={product.picUrl[0]} alt={product.name}/>
           <ProductProperty>
             {capitalizeFirstLetter(product.name.toLowerCase())}
@@ -62,7 +69,7 @@ const Products = () => {
 export default Products
 
 const FiltersContainer = styled.div`
-  padding: 40px 40px 0 40px;
+  margin-bottom: 40px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   @media (min-width: ${screenSize.tablet}) and (max-width: ${screenSize.laptop}) {
@@ -78,7 +85,6 @@ const Filter = styled.div`
 `
 
 const ProductContainer = styled.div`
-  padding: 40px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   @media (min-width: ${screenSize.tablet}) and (max-width: ${screenSize.laptop}) {
