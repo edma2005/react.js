@@ -8,6 +8,7 @@ import { getUniqueArrayItems } from '../../utils/array'
 import { screenSize } from '../../consts/mediaQueries'
 import { lightBorderColor } from '../../consts/colors'
 import { PRODUCT_PATH } from '../../routes/const'
+import { dollarSymbol } from '../../consts/currency'
 
 const Products = () => {
     const {category} = useParams()
@@ -58,7 +59,7 @@ const Products = () => {
             {capitalizeFirstLetter(product.name.toLowerCase())}
           </ProductProperty>
           <ProductProperty>
-            <p>${product.price}</p>
+            <p>{dollarSymbol} {product.price}</p>
           </ProductProperty>
       </ProductItem>)}
     </ProductContainer>
