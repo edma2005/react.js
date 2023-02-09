@@ -5,6 +5,8 @@ import { dollarSymbol } from "../../consts/currency"
 import { screenSize } from "../../consts/mediaQueries"
 import { capitalizeFirstLetter } from "../../utils/string"
 import Button from "../../components/Button/Button"
+import { Link } from 'react-router-dom'
+import { LOGIN_PATH } from '../../routes/const'
 
 const Cart = () => {
     const { products } = useContext(ProductContext)
@@ -38,7 +40,7 @@ const Cart = () => {
             </CartItem>)}
             </CartContainer>
             <ButtonContainer>
-            <Button>Checkout</Button>
+            <Button as={Link} to={LOGIN_PATH}>Checkout</Button>
             </ButtonContainer>
         </Container>
   )
