@@ -6,7 +6,7 @@ import { screenSize } from "../../consts/mediaQueries"
 import * as Yup from "yup"
 import { Link , useNavigate } from "react-router-dom"
 import { LOGIN_PATH } from "../../routes/const"
-import { createUser } from "../../api/user"
+import { useCreateUser } from "../../hooks/user"
 
 const validationSchema = Yup.object().shape({
     first_name: Yup.string().required("Required"),
@@ -20,13 +20,17 @@ const Register = () => {
 
   const navigate = useNavigate()
 
-const handleSubmit = (values) => {
+  const { mutateAsync: createUser } = useCreateUser()
+
+
+  const handleSubmit = (values) => {
   const {confirm_password, ...user} = values
 
   createUser(user)
   .then(() => {
     navigate(LOGIN_PATH)
-  }).catch((error) => {
+  })
+  .catch((error) => {
     console.error("Failed to create user: ", error)
   })
   // setTimeout(() => {

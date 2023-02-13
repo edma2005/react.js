@@ -12,7 +12,6 @@ const ProductProvider = ({children}) => {
         ...product,
          picUrl: JSON.parse(product.picUrl), 
          size: JSON.parse(product.size)}))
-
     }
 
     useEffect(() => {

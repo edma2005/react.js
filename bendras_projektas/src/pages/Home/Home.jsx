@@ -1,17 +1,32 @@
-import { useContext } from 'react'
-import { ProductContext } from '../../contexts/ProductContext'
 import { getUniqueArrayItems } from '../../utils/array'
 import styled from 'styled-components'
 import ProductCategory from './ProductCategory'
+import { useTestData } from '../../hooks/test'
+import { useProducts } from '../../hooks/products'
 
 const Home = () => {
-  const { products } = useContext(ProductContext)
+  const { data, isLoading, error } = useProducts()
+  const products = data || []
+
+  const { data: testData, isLoading: testLoading } = useTestData()
+
   const uniqCategories = getUniqueArrayItems(products.map((product) => product.type))
 
   const categories = uniqCategories.map((category) => ({
     name: category, 
     image: products.find((product) => product.type === category).picUrl,
   }))
+
+  if (isLoading) {
+    return "Kraunasi..."
+  }
+
+  if (error) {
+    return "Nepavyko gauti produktu"
+  }
+
+  console.log(testLoading)
+  console.log(testData)
 
   console.log(uniqCategories)
   console.log(categories)

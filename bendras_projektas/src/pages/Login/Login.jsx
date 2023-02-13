@@ -6,10 +6,10 @@ import { screenSize } from "../../consts/mediaQueries"
 import * as Yup from "yup"
 import { Link } from "react-router-dom"
 import { CHECKOUT_PATH, REGISTER_PATH } from "../../routes/const"
-import { loginUser } from "../../api/user"
 import { useContext } from "react"
 import { UserContext } from "../../contexts/UserContext"
 import { useNavigate } from "react-router-dom"
+import { useLoginUser } from "../../hooks/user"
 
 
 const validationSchema = Yup.object().shape({
@@ -20,6 +20,7 @@ const validationSchema = Yup.object().shape({
 const Login = () => {
 
   const { setUser } = useContext(UserContext)
+  const { mutateAsync: loginUser } = useLoginUser()
   const navigate = useNavigate()
 
 const handleSubmit = (values) => {
