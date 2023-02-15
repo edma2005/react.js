@@ -1,39 +1,34 @@
-import styled from "styled-components"
-import { lightBorderColor } from "../consts/colors"
-import SearchBar from '../components/SearchBar/SearchBar'
-import { Link } from 'react-router-dom'
-import { HOME_PATH } from '../routes/const'
-import { CART_PATH } from '../routes/const'
-import { FaShoppingCart } from "react-icons/fa"
+import styled from "styled-components";
+import { lightBorderColor } from "../consts/color";
+import SearchBar from "../components/SearchBar/SearchBar";
+import { Link } from "react-router-dom";
+import { CART_PATH, HOME_PATH } from "../routes/const";
+import { FaShoppingCart } from "react-icons/fa";
 
-const Topbar = () => {
-  return ( 
-  <Container>
-    <NavigationItem>
-      Categories
-    </NavigationItem>
-    <Logo 
-    as={Link} 
-    to={HOME_PATH}>
-      EdmaShop
-    </Logo>
-    <ItemContainer>
-    <SearchBar/>
-    <Link to ={CART_PATH}>
-    <FaShoppingCart fontSize={20}/>
-    </Link>
-    </ItemContainer>
-  </Container>
-  )
-}
+const TopBar = () => {
+  return (
+    <Container>
+      <NavigationItem>Categories</NavigationItem>
+      <Logo as={Link} to={HOME_PATH}>
+        POHSE
+      </Logo>
+      <ItemContainer>
+        <SearchBar />
+        <Link to={CART_PATH}>
+          <FaShoppingCart fontSize={20} />
+        </Link>
+      </ItemContainer>
+    </Container>
+  );
+};
 
-export default Topbar
+export default TopBar;
 
 const ItemContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
-`
+`;
 
 const Container = styled.div`
   padding: 6px 30px;
@@ -42,15 +37,15 @@ const Container = styled.div`
   align-items: center;
   border-bottom: 1px solid ${lightBorderColor};
   background-color: #ffffff;
-`
+`;
 
 const NavigationItem = styled.div`
   font-size: 19px;
-`
+`;
 
 const Logo = styled.div`
   font-weight: 700;
   font-size: 28px;
   text-decoration: none;
   color: inherit;
-`
+`;

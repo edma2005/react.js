@@ -1,19 +1,17 @@
-import Topbar from "./Topbar"
-import styled from "styled-components"
+import TopBar from "../layouts/Topbar";
+import styled from "styled-components";
 
 const MainLayout = ({ children }) => {
   return (
     <>
-        <Topbar/>
-        <Wrapper>
-        {children}
-        </Wrapper>
+      <TopBar />
+      <Wrapper>{children}</Wrapper>
     </>
-  )
-}
+  );
+};
 
-export default MainLayout
+export default MainLayout;
 
 const Wrapper = styled.div`
-    padding: 20px 40px;
-`
+  padding: 20px 40px;
+`;

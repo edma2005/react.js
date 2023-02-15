@@ -1,1 +1,1 @@
-export const getUniqueArrayItems = (array) => [...new Set(array)]
+export const getUniqueArrayItems = (array) => [...new Set(array)];

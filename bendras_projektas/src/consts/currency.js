@@ -1,1 +1,1 @@
-export const dollarSymbol = "$"
+export const euroSymbol = "€";

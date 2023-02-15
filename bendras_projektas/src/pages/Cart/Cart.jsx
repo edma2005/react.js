@@ -1,98 +1,67 @@
-import { useContext } from "react"
-import styled from "styled-components"
-import { dollarSymbol } from "../../consts/currency"
-import { screenSize } from "../../consts/mediaQueries"
-import { capitalizeFirstLetter } from "../../utils/string"
-import Button from "../../components/Button/Button"
-import { Link } from 'react-router-dom'
-import { CHECKOUT_PATH, LOGIN_PATH } from '../../routes/const'
-import { UserContext } from "../../contexts/UserContext"
-import { useProducts } from "../../hooks/products"
+//1. Carte atvaizduojam itemus (kaina x quantity)
+//1.1 Mygtukas apmoketi, numeta i login/register page
+//2.Login page
+//3. Register page
+//4. AuthContext susitvatkome, kad saugotu useri
+
+import styled from "styled-components";
+import { screenSize } from "../../consts/mediaQueries";
+import Button from "../../components/Button/Button";
+import { Link } from "react-router-dom";
+import { LOGIN_PATH, CHECKOUT_PATH } from "../../routes/const";
+import { CartContext } from "../../contexts/CartContext";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import CartItem from "./CartItem";
 
 const Cart = () => {
-    const { data } = useProducts() 
-    const products = data || []
-    const { isLoggedIn } = useContext(UserContext)
-
-    const cartProducts = products.slice(0,2)
+  const { cartItems } = useContext(CartContext);
+  const { isLoggedIn } = useContext(UserContext);
 
   return (
-        <Container>
-            <Header>
-                <h2>
-                    My Bag
-                </h2>
-                <p>
-                    Items are reserved for 30 minutes
-                </p>
-            </Header>
-            <CartContainer>
-                {cartProducts.map(product => 
-            <CartItem key={product.id}>
-                <img src={product.picUrl[0]} alt={product.name}/>
-                <div>
-            <CartItemPrice>
-                {dollarSymbol}
-                {product.price}
-            </CartItemPrice>
-                <p>{product.name}</p>
-            <CartItemColor>
-                {capitalizeFirstLetter(product.color.toLowerCase())}
-            </CartItemColor>
-                </div>
-            </CartItem>)}
-            </CartContainer>
-            <ButtonContainer>
-            <Button as={Link} to={isLoggedIn ? CHECKOUT_PATH : LOGIN_PATH}>Checkout</Button>
-            </ButtonContainer>
-        </Container>
-  )
-}
+    <Container>
+      <Header>
+        <h2>MY BAG</h2>
+        <p>Items are reserved for 30 minutes</p>
+      </Header>
+      <CartContainer>
+        {cartItems.map((product) => (
+          <CartItem key={product.id} product={product} />
+        ))}
+      </CartContainer>
+      <ButtonContainer>
+        <Button as={Link} to={isLoggedIn ? CHECKOUT_PATH : LOGIN_PATH}>
+          Checkout
+        </Button>
+      </ButtonContainer>
+    </Container>
+  );
+};
 
-export default Cart
+export default Cart;
 
 const Container = styled.div`
-    max-width: ${screenSize.tablet};
-    margin: 0 auto;
-`
+  max-width: ${screenSize.tablet};
+  margin: 0 auto;
+`;
 
 const Header = styled.div`
-    padding: 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff;
-    border-radius: 6px;
-    margin-bottom: 24px;
-`
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 4px;
+  margin-bottom: 24px;
+`;
 
 const CartContainer = styled.div`
-    background-color: #ffffff;
-    margin-bottom: 24px;
-`
-
-const CartItem = styled.div`
-    display: flex;
-    img {
-        width: 120px;
-        margin-right: 8px;
-        object-fit: contain;
-    }
-`
-
-const CartItemPrice = styled.p`
-    font-size: 20px;
-    font-weight: 700;
-    margin-top: 16px;
-    margin-bottom: 8px;
-`
-
-const CartItemColor = styled.p`
-    margin-top: 8px;
-    font-weight: 300;
-`
+  background-color: #ffffff;
+  margin-bottom: 24px;
+`;
 
 const ButtonContainer = styled.div`
-    display: flex;
-    justify-content: flex-end;
-`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+`;

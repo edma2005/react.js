@@ -1,15 +1,13 @@
-import { Field, ErrorMessage } from "formik"
-import { Input } from "../Input/Input"
+import { Field, ErrorMessage } from "formik";
+import Input from "../Input/Input";
 
-
-
-const FormikInput = ({name, ...rest}) => {
+const FormikInput = ({ name, ...rest }) => {
   return (
     <div>
-    <Field name={name} as={Input} {...rest} />
-    <ErrorMessage name={name} component="div"/>
+      <Field name={name} as={Input} {...rest}></Field>
+      <ErrorMessage name={name} component="div"></ErrorMessage>
     </div>
-  )
-}
+  );
+};
 
-export default FormikInput
+export default FormikInput;
