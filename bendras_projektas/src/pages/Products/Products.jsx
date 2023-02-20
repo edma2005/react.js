@@ -58,9 +58,14 @@ export const Products = () => {
       </FiltersContainer>
       <ProductsContainer>
         {filteredProducts.map((product) => (
-          <ProductItem key={product.id} onClick={() => navigateToProduct(category, product.id)}>
+          <ProductItem
+            key={product.id}
+            onClick={() => navigateToProduct(category, product.id)}
+          >
             <img src={product.picUrl[0]} alt={product.name} />
-            <ProductProperty>{capitalizeFirstLetter(product.name.toLowerCase())}</ProductProperty>
+            <ProductProperty>
+              {capitalizeFirstLetter(product.name.toLowerCase())}
+            </ProductProperty>
             <ProductProperty>€ {product.price}</ProductProperty>
           </ProductItem>
         ))}

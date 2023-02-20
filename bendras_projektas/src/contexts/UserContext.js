@@ -7,7 +7,9 @@ const UserProvider = ({ children }) => {
   const isLoggedIn = !!user;
 
   return (
-    <UserContext.Provider value={{ user, isLoggedIn, setUser }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ user, isLoggedIn, setUser }}>
+      {children}
+    </UserContext.Provider>
   );
 };
 export { UserContext, UserProvider };

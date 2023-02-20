@@ -1,6 +1,6 @@
-export const primaryButtonColor = '#a89583'
-export const primaryDarkButtonColor = '#968472'
-export const lightBorderColor = '#e7e3e1'
-export const searchBarColor = '#f5f3f3a3'
-export const inputColor = '#887569'
-export const inputBgColor = '#eae7e5'
+export const primaryButtonColor = "#a89583";
+export const primaryDarkButtonColor = "#968472";
+export const lightBorderColor = "#e7e3e1";
+export const searchBarColor = "#f5f3f3a3";
+export const inputColor = "#887569";
+export const inputBgColor = "#eae7e5";

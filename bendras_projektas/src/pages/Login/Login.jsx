@@ -62,7 +62,11 @@ const Login = () => {
           <StyledForm>
             <Title>Login</Title>
             <FormikInput type="email" name="email" placeholder="Email" />
-            <FormikInput type="password" name="password" placeholder="Password" />
+            <FormikInput
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
             <Button type="submit" disabled={isSubmitting}>
               Login
             </Button>

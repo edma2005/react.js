@@ -45,7 +45,10 @@ const PaymentForm = () => {
     >
       <StyledForm>
         <Subtitle>Contact Details</Subtitle>
-        <FormikSelect name="country" options={[{ value: "LT", label: "Lithuania" }]} />
+        <FormikSelect
+          name="country"
+          options={[{ value: "LT", label: "Lithuania" }]}
+        />
         <FormikInput name="address" placeholder="Address" />
         <InputRow>
           <InputRowItem>
@@ -67,7 +70,11 @@ const PaymentForm = () => {
         </InputRow>
         <InputRow>
           <CardNumber>
-            <FormikInput type="number" name="card_number" placeholder="Card Number" />
+            <FormikInput
+              type="number"
+              name="card_number"
+              placeholder="Card Number"
+            />
           </CardNumber>
           <InputRowItem>
             <FormikInput type="number" name="card_cvv" placeholder="CVV" />

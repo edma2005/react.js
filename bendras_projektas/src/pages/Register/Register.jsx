@@ -72,7 +72,11 @@ const Register = () => {
             <FormikInput name="first_name" placeholder="First Name" />
             <FormikInput name="last_name" placeholder="Last Name" />
             <FormikInput type="email" name="email" placeholder="Email" />
-            <FormikInput type="password" name="password" placeholder="Password" />
+            <FormikInput
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
             <FormikInput
               type="password"
               name="confirm_password"

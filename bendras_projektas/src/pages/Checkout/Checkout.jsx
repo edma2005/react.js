@@ -6,7 +6,8 @@ import { screenSize } from "../../consts/mediaQueries";
 import PaymentForm from "./PaymentForm";
 
 const Checkout = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, handleUpdateQuantity } = useContext(CartContext);
+
   return (
     <Container>
       <PaymentContainer>
@@ -14,7 +15,14 @@ const Checkout = () => {
       </PaymentContainer>
       <CartContainer>
         {cartItems.map((product) => (
-          <CartItem key={product.id} product={product} />
+          <CartItem
+            key={product.id}
+            product={product}
+            handleIncreaseQuantity={() =>
+              handleUpdateQuantity(product.id, "increase")
+            }
+            handleDecreaseQuantity={() => handleUpdateQuantity(product.id)}
+          />
         ))}
       </CartContainer>
     </Container>
