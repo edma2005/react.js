@@ -3,11 +3,17 @@ import { useState } from "react";
 import SearchBar from "./SearchBar";
 import { useProducts } from "../../hooks/products";
 import styled from "styled-components";
+import { lightBorderColor } from "../../consts/color";
+import { generatePath, Link } from "react-router-dom";
+import { PRODUCT_PATH } from "../../routes/const";
 
 const EnhancedSearchBar = () => {
   const [search, setSearch] = useState("");
-  const { data } = useProducts;
-  const products = data || [].slice(0, 5);
+  const { data } = useProducts();
+  const products = (data || []).slice(0, 5);
+  const filteredItems = products.filter((product) =>
+    product.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <Popover
@@ -15,9 +21,22 @@ const EnhancedSearchBar = () => {
       positions={["top", "bottom", "left", "right"]}
       content={
         <Container>
-          {products.map((product) => {
-            <p key={product.id}>{product.name}</p>;
-          })}
+          {filteredItems.length ? (
+            filteredItems.map((product) => (
+              <p key={product.id} onClick={() => setSearch("")}>
+                <Link
+                  to={generatePath(PRODUCT_PATH, {
+                    category: product.type,
+                    productId: product.id,
+                  })}
+                >
+                  {product.name}
+                </Link>
+              </p>
+            ))
+          ) : (
+            <p>Item not found.</p>
+          )}
         </Container>
       }
     >
@@ -27,18 +46,16 @@ const EnhancedSearchBar = () => {
     </Popover>
   );
 };
-
 export default EnhancedSearchBar;
 
 const Container = styled.div`
-  height: 140px;
+  max-height: 135px;
   background-color: #ffffff;
-  border: 1px solid grey;
+  border: 1px solid ${lightBorderColor};
   border-radius: 5px;
-  padding-right: 8px;
-  padding-left: 8px;
-
+  width: 205px;
   p {
-    padding-top: 8px;
+    padding: 8px;
+    font-size: 13px;
   }
 `;

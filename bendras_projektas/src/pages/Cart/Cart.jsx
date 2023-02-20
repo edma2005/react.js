@@ -1,3 +1,9 @@
+//1. Carte atvaizduojam itemus (kaina x quantity)
+//1.1 Mygtukas apmoketi, numeta i login/register page
+//2.Login page
+//3. Register page
+//4. AuthContext susitvatkome, kad saugotu useri
+
 import styled from "styled-components";
 import { screenSize } from "../../consts/mediaQueries";
 import Button from "../../components/Button/Button";
@@ -7,25 +13,15 @@ import { CartContext } from "../../contexts/CartContext";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import CartItem from "./CartItem";
-import { useNavigate } from "react-router-dom";
-import { CART_PATH } from "../../routes/const";
-import { useEffect } from "react";
 
 const Cart = () => {
   const { cartItems, handleUpdateQuantity } = useContext(CartContext);
   const { isLoggedIn } = useContext(UserContext);
 
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (!cartItems.length) {
-      navigate(CART_PATH);
-    }
-  }, [cartItems.length, navigate]);
-
   return (
     <Container>
       <Header>
-        {!!cartItems.length ? (
+        {cartItems.length ? (
           <>
             <h2>MY BAG</h2>
             <p>Items are reserved for 30 minutes</p>

@@ -1,4 +1,4 @@
-import TopBar from "../layouts/Topbar";
+import TopBar from "./Topbar";
 import styled from "styled-components";
 
 const MainLayout = ({ children }) => {

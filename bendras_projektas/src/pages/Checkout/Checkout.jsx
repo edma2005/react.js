@@ -1,12 +1,22 @@
 import { CartContext } from "../../contexts/CartContext";
 import CartItem from "../Cart/CartItem";
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { screenSize } from "../../consts/mediaQueries";
 import PaymentForm from "./PaymentForm";
+import { useNavigate } from "react-router-dom";
+import { CART_PATH } from "../../routes/const";
 
 const Checkout = () => {
   const { cartItems, handleUpdateQuantity } = useContext(CartContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!cartItems.length) {
+      navigate(CART_PATH);
+    }
+  }, [cartItems.length, navigate]);
 
   return (
     <Container>

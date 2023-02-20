@@ -54,10 +54,12 @@ const CartItemColor = styled.p`
 
 const ItemQuantityContainer = styled.div`
   flex: 1;
-  margin-right: 32px;
+  align-self: center;
+  margin-right: 24px;
+  text-align: right;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
   gap: 10px;
   user-select: none;
 
