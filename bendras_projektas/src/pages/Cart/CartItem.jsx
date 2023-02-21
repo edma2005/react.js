@@ -2,11 +2,7 @@ import styled from "styled-components";
 import { euroSymbol } from "../../consts/currency";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
-const CartItem = ({
-  product,
-  handleDecreaseQuantity,
-  handleIncreaseQuantity,
-}) => {
+const CartItem = ({ product, handleDecreaseQuantity, handleIncreaseQuantity }) => {
   return (
     <Container>
       <img src={product.picUrl[0]} alt={product.name} />

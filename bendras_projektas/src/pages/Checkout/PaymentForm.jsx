@@ -10,6 +10,7 @@ import { lightBorderColor } from "../../consts/color";
 import { requiredField } from "../../consts/validations";
 import FormikSelect from "../../components/Formik/FormikSelect";
 import { HOME_PATH } from "../../routes/const";
+import { toast } from "react-hot-toast";
 
 const validationSchema = Yup.object().shape({
   country: Yup.object().required(requiredField),
@@ -26,10 +27,10 @@ const validationSchema = Yup.object().shape({
 const PaymentForm = () => {
   const navigate = useNavigate();
   const { resetCart } = useContext(CartContext);
-  const handleSubmit = (values) => {
+  const handleSubmit = () => {
     resetCart();
-    console.log(values);
     navigate(HOME_PATH);
+    toast.success("Purchases confirmed");
   };
 
   return (
@@ -50,10 +51,7 @@ const PaymentForm = () => {
     >
       <StyledForm>
         <Subtitle>Contact Details</Subtitle>
-        <FormikSelect
-          name="country"
-          options={[{ value: "LT", label: "Lithuania" }]}
-        />
+        <FormikSelect name="country" options={[{ value: "LT", label: "Lithuania" }]} />
         <FormikInput name="address" placeholder="Address" />
         <InputRow>
           <InputRowItem>
@@ -75,11 +73,7 @@ const PaymentForm = () => {
         </InputRow>
         <InputRow>
           <CardNumber>
-            <FormikInput
-              type="number"
-              name="card_number"
-              placeholder="Card Number"
-            />
+            <FormikInput type="number" name="card_number" placeholder="Card Number" />
           </CardNumber>
           <InputRowItem>
             <FormikInput type="number" name="card_cvv" placeholder="CVV" />

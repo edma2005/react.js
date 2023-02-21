@@ -26,17 +26,12 @@ const CartProvider = ({ children }) => {
 
   const handleUpdateQuantity = (id, type) => {
     const increaseValue = type === "increase" ? 1 : -1;
-    const updatedItem = (i) =>
-      i.id === id ? { ...i, quantity: i.quantity + increaseValue } : i;
-    setCartItems((prevItems) =>
-      prevItems.map(updatedItem).filter((i) => i.quantity)
-    );
+    const updatedItem = (i) => (i.id === id ? { ...i, quantity: i.quantity + increaseValue } : i);
+    setCartItems((prevItems) => prevItems.map(updatedItem).filter((i) => i.quantity));
   };
 
   return (
-    <CartContext.Provider
-      value={{ resetCart, cartItems, handleAddToCart, handleUpdateQuantity }}
-    >
+    <CartContext.Provider value={{ resetCart, cartItems, handleAddToCart, handleUpdateQuantity }}>
       {children}
     </CartContext.Provider>
   );

@@ -7,9 +7,7 @@ const Home = () => {
   const { data, isLoading, error } = useProducts();
   const products = data || [];
 
-  const uniqCategories = getUniqueArrayItems(
-    products.map((product) => product.type)
-  );
+  const uniqCategories = getUniqueArrayItems(products.map((product) => product.type));
 
   // [t'shirt...]
   //[{category: 't'shirt'}, img: ''}]
@@ -30,11 +28,7 @@ const Home = () => {
     <Container>
       <ProductContainer>
         {categories.map((category) => (
-          <ProductCategory
-            key={category.name}
-            name={category.name}
-            image={category.image[0]}
-          />
+          <ProductCategory key={category.name} name={category.name} image={category.image[0]} />
         ))}
       </ProductContainer>
     </Container>

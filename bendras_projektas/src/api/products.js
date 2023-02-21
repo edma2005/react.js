@@ -11,7 +11,5 @@ const transformData = (products) => {
 };
 
 export const fetchProducts = () => {
-  return axios
-    .get(PRODUCTS_API)
-    .then((response) => transformData(response.data.data));
+  return axios.get(PRODUCTS_API).then((response) => transformData(response.data.data));
 };

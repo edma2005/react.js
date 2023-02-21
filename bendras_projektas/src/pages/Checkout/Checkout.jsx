@@ -28,9 +28,7 @@ const Checkout = () => {
           <CartItem
             key={product.id}
             product={product}
-            handleIncreaseQuantity={() =>
-              handleUpdateQuantity(product.id, "increase")
-            }
+            handleIncreaseQuantity={() => handleUpdateQuantity(product.id, "increase")}
             handleDecreaseQuantity={() => handleUpdateQuantity(product.id)}
           />
         ))}

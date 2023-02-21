@@ -6,11 +6,7 @@ const SearchBar = ({ value, setValue }) => {
   return (
     <InputWrapper>
       <AiOutlineSearch />
-      <Input
-        placeholder="Search"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
+      <Input placeholder="Search" value={value} onChange={(e) => setValue(e.target.value)} />
     </InputWrapper>
   );
 };
