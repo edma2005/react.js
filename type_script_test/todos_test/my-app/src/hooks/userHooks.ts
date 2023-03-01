@@ -1,6 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { createUser, loginUser, fetchUsers } from "../api/users";
-
+import { createUser, loginUser, fetchUsers } from "../api/usersApi";
 const USERS = "USERS";
 
 export const useUsers = () => {

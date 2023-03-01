@@ -1,4 +1,4 @@
 export type Route = {
-  path: "/" | "/users"; // arba string
+  path: "/" | "/users";
   Component: () => JSX.Element;
 };
