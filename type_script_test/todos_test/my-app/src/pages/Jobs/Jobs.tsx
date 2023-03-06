@@ -1,66 +1,164 @@
-import { useJobs } from "../../hooks/jobsHooks";
-import JobCard from "./JobCard";
-import styled from "styled-components";
-import { useContext } from "react";
-import {
-  borderRadius,
-  darkGrey,
-  lightGrey,
-  mainBgColor,
-} from "../../const/styles";
+import { DateOption, PriceOption } from "../../types/select";
+import { borderRadius, darkGrey, mainBgColor } from "../../const/styles";
+import { dateOptions, priceOptions } from "../../const/selectOptions";
+
 import Button from "../../components/Button/Button";
-import StyledModal from "../../components/StyledModal/StyledModal";
-import { ModalContext } from "../../context/ModalContext";
 import Emoji from "../../components/Emoji/Emoji";
-import AddJob from "../AddJob/AddJob";
-import Apply from "../Apply/Apply";
+import { Job } from "../../types/job";
+import JobAdForm from "./JobAdForm";
+import JobApplicationForm from "./JobApplicationForm";
+import JobCard from "./JobCard";
+import Loader from "../../components/Loader/Loader";
+import LoginForm from "./LoginForm";
+import RegisterForm from "../Register/RegisterForm";
+import Select from "react-select";
+import StyledModal from "../../components/StyledModal/StyledModal";
+import { sortSelect } from "../../utils/select";
+import styled from "styled-components";
+import { useJobs } from "../../hooks/jobsHooks";
+import { useState } from "react";
 
 const Jobs = () => {
-  const {
-    openModal,
-    modalIsOpen1,
-    openSecondModal,
-    modalIsOpen2,
-    closeModal,
-    closeSecondModal,
-  } = useContext(ModalContext);
   const { data: jobs, isLoading } = useJobs();
+  const [adFormOpen, setAdFormOpen] = useState(false);
+  const [applicationFormOpen, setApplicationFormOpen] = useState(false);
+  const [registerOpen, setRegisterOpen] = useState(false);
+  const [loginFormOpen, setLoginFormOpen] = useState(false);
 
-  if (isLoading) {
-    return <div>Jobs are loading...</div>;
-  }
+  const handleRegisterToggle = () => {
+    setRegisterOpen((prevOpen) => !prevOpen);
+  };
+  const [selectedDateOption, setSelectedDateOption] = useState<DateOption>({
+    value: "",
+    label: "Sort by starting date",
+  });
+
+  const [selectedPriceOption, setSelectedPriceOption] = useState<PriceOption>({
+    value: "",
+    label: "Sort by salary",
+  });
+
+  const handleToggleAdForm = () => {
+    setAdFormOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleToggleApplicationForm = () => {
+    setApplicationFormOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleDateSortChange = (selectedOption: DateOption | null) => {
+    setSelectedDateOption(
+      selectedOption || { value: "", label: "Sort by starting date" }
+    );
+    setSelectedPriceOption({ value: "", label: "Sort by salary" });
+  };
+
+  const handlePriceSortChange = (selectedOption: PriceOption | null) => {
+    setSelectedPriceOption(
+      selectedOption || { value: "", label: "Sort by salary" }
+    );
+    setSelectedDateOption({ value: "", label: "Sort by starting date" });
+  };
+
+  const handleToggleLoginForm = () => {
+    setLoginFormOpen((prevOpen) => !prevOpen);
+  };
 
   if (!isLoading && !jobs?.length) {
     return <div>There are no jobs added yet</div>;
   }
-  console.log(jobs);
+
+  let sortedJobs: Job[];
+  if (jobs) {
+    sortedJobs = sortSelect(jobs, selectedDateOption, selectedPriceOption);
+  } else {
+    sortedJobs = [];
+  }
 
   return (
     <Container>
       <Title>
         Vilnius Tech Jobs <Emoji symbol="🎉" />
       </Title>
+      <Loader isLoading={isLoading} />
       <TopContainer>
-        <Button greyVariant={true} onClick={openModal} title="post a job" />
+        <Button onClick={handleRegisterToggle} title="Register" greyVariant />
+        <Button onClick={handleToggleLoginForm} title="Log In" greyVariant />
+        <Button onClick={handleToggleAdForm} title="Post a job" greyVariant />
+        <Button
+          greyVariant={true}
+          onClick={handleToggleAdForm}
+          title="post a job"
+        />
+        <Select
+          options={dateOptions}
+          value={selectedDateOption}
+          onChange={handleDateSortChange}
+          placeholder="Sort by starting date"
+        />
+        <Select
+          options={priceOptions}
+          value={selectedPriceOption}
+          onChange={handlePriceSortChange}
+          placeholder="Sort by salary"
+        />
+        <Button onClick={handleToggleAdForm} title="post a job" greyVariant />
+        <Button onClick={handleToggleLoginForm} title="log In" greyVariant />
       </TopContainer>
       <JobsContainer>
-        {jobs.map((job, index) => (
-          <JobCard key={index} job={job} onClick={openSecondModal} />
+        {jobs &&
+          jobs.map((job, index) => (
+            <JobCard
+              key={index}
+              job={job}
+              onClick={handleToggleApplicationForm}
+            />
+          ))}
+        {sortedJobs.map((job, index) => (
+          <JobCard
+            key={index}
+            job={job}
+            onClick={handleToggleApplicationForm}
+          />
         ))}
       </JobsContainer>
       <StyledModal
         modalSize="medium"
-        modalIsOpen={modalIsOpen1}
-        closeModal={closeModal}
+        modalIsOpen={adFormOpen}
+        closeModal={handleToggleAdForm}
+      />
+      <StyledModal
+        modalSize="medium"
+        modalIsOpen={adFormOpen}
+        closeModal={handleToggleAdForm}
+      />
+      <StyledModal
+        modalSize="medium"
+        modalIsOpen={adFormOpen}
+        closeModal={handleToggleAdForm}
       >
-        <AddJob />
+        <JobAdForm closeModal={handleToggleAdForm} />
       </StyledModal>
       <StyledModal
         modalSize="small"
-        modalIsOpen={modalIsOpen2}
-        closeModal={closeSecondModal}
+        modalIsOpen={applicationFormOpen}
+        closeModal={handleToggleApplicationForm}
       >
-        <Apply />
+        <JobApplicationForm closeModal={handleToggleApplicationForm} />
+      </StyledModal>
+      <StyledModal
+        modalSize="medium"
+        modalIsOpen={registerOpen}
+        closeModal={handleRegisterToggle}
+      >
+        <RegisterForm closeModal={handleRegisterToggle} />
+      </StyledModal>
+      <StyledModal
+        modalSize="small"
+        modalIsOpen={loginFormOpen}
+        closeModal={handleToggleLoginForm}
+      >
+        <LoginForm closeModal={handleToggleLoginForm} />
       </StyledModal>
     </Container>
   );

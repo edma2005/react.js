@@ -1,18 +1,17 @@
-import styled from "styled-components";
-import { Formik, Form } from "formik";
-import { useContext } from "react";
-import { ModalContext } from "../../context/ModalContext";
 import * as Yup from "yup";
+
+import { Form, Formik } from "formik";
+
+import { ApplyUser } from "../../types/user";
+import Button from "../../components/Button/Button";
+import Emoji from "../../components/Emoji/Emoji";
+import FormikInput from "../../components/Formik/FormikInput";
 import { darkGrey } from "../../const/styles";
 import { requiredField } from "../../const/validations";
-import { useCreateJob } from "../../hooks/jobsHooks";
-import Button from "../../components/Button/Button";
-import FormikInput from "../../components/Formik/FormikInput";
-import Emoji from "../../components/Emoji/Emoji";
-import { ApplyUser } from "../../types/user";
+import styled from "styled-components";
 import { toast } from "react-hot-toast";
 
-const initialValues = {
+const initialValues: ApplyUser = {
   first_name: "",
   last_name: "",
   email: "",
@@ -30,17 +29,20 @@ const validationSchema: Yup.ObjectSchema<ApplyUser> = Yup.object().shape({
   user_id: Yup.number().required(),
 });
 
-const Apply = () => {
-  const { closeModal } = useContext(ModalContext);
+type Props = {
+  closeModal: () => void;
+};
+
+const JobApplicationForm = ({ closeModal }: Props) => {
   // const { mutateAsync: createJob } = useCreateJob();
 
   const handleSubmit = (values: any) => {
-    console.log(values);
     toast("Submission successfull!", {
       icon: "🥳",
     });
+    closeModal();
     // createJob(values)
-    //   .then((response) => {
+    //   .then(() => {
     //     closeModal();
     //   })
     //   .catch((error) => {
@@ -61,39 +63,22 @@ const Apply = () => {
           </Title>
           <InputRow>
             <InputRowItem>
-              <FormikInput
-                type="text"
-                name="first_name"
-                placeholder="First name"
-              />
+              <FormikInput type="text" name="first_name" placeholder="First name" />
             </InputRowItem>
             <InputRowItem>
-              <FormikInput
-                type="text"
-                name="last_name"
-                placeholder="Last name"
-              />
+              <FormikInput type="text" name="last_name" placeholder="Last name" />
             </InputRowItem>
           </InputRow>
           <InputRow>
             <InputRowItem>
-              <FormikInput
-                type="email"
-                name="email"
-                placeholder="Your email address"
-              />
+              <FormikInput type="email" name="email" placeholder="Your email address" />
             </InputRowItem>
             <InputRowItem>
-              <FormikInput
-                type="number"
-                name="phone_number"
-                placeholder="Your phone number"
-              />
+              <FormikInput type="number" name="phone_number" placeholder="Your phone number" />
             </InputRowItem>
           </InputRow>
-
           <ButtonsContainer>
-            <Button greyVariant={true} onClick={closeModal} title="close" />
+            <Button onClick={closeModal} title="close" greyVariant />
             <Button title="submit application" onClick={submitForm} />
           </ButtonsContainer>
         </StyledForm>
@@ -102,7 +87,7 @@ const Apply = () => {
   );
 };
 
-export default Apply;
+export default JobApplicationForm;
 
 const ButtonsContainer = styled.div`
   display: flex;
