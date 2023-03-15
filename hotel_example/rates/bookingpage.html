@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS STYLES -->
+    <link rel="stylesheet" href="../globalstyles.css">
+    <link rel="stylesheet" href="./bookingpage.css">
+
+    <!-- JS -->
+    <script defer src="../userauth.js"></script>
+    <script defer src="./bookingpage.js"></script>
+
+
+    <!-- FONTS, ICONS -->
+    <script src="https://kit.fontawesome.com/0eb9458fd3.js"
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,400;1,200&display=swap"
+        rel="stylesheet">
+
+    <title>Confirm booking</title>
+</head>
+
+<body>
+    <div class="main-container">
+        <header>
+            <nav class="navbar">
+                <a href="../home/index.html">
+                    <img class="logo" src="../pics/logo/logo-no-background.png"
+                        alt="">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="../home/index.html" class="nav-link">Home</a>
+                    </li>
+                    <li><a href="../about/about.html" class="nav-link">About
+                            us</a></li>
+                    <li><a href="../rates/rates.html" class="nav-link">Rates &
+                            Availability</a></li>
+                    <li>
+                        <button onclick="location.href = '../rates/rates.html';"
+                            id="book-now" class="nav-link">Book
+                            Now</button>
+                    </li>
+                    <li class="account">
+                        <a id="to-userpage" href="../account/account.html"
+                            class="nav-link">Account</a>
+                    </li>
+                    <li class="account">
+                        <a id="log-out" href="" class="nav-link">Log Out</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+
+            </nav>
+        </header>
+        <main>
+            <form class="booking-details">
+                <div class="form-wrapper">
+                    <h2>next step: personal details</h2>
+                    <p>Please, fill in your personal details below, making sure
+                        that you enter them correctly <i
+                            class="fa-solid fa-pen"></i></p>
+                    <div class="name-wrapper">
+                        <div class="first-name input-wrap">
+                            <label for="first-name">First name: </label>
+                            <input type="text" id="first-name" name="first-name"
+                                required>
+                        </div>
+                        <div class="last-name input-wrap">
+                            <label for="last-name">Last name: </label>
+                            <input type="text" id="last-name" name="last-name"
+                                required>
+                        </div>
+                        <div class="phone-number input-wrap">
+                            <label for="phone-number">Phone number: </label>
+                            <input type="tel" id="phone-number"
+                                name="phone-number" required>
+                        </div>
+                    </div>
+                    <div class="special-request input-wrap">
+                        <label for="special-request">Special requests:
+                        </label>
+                        <textarea id="special-request" name="special-request"
+                            rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="booking-info">
+                    <h3>Booking overview:</h3>
+                    <div class="button-wrapper">
+                        <button type="submit" id="submit-btn">Confirm
+                            booking</button>
+                    </div>
+                </div>
+
+            </form>
+        </main>
+        <footer>
+            <div class="address">
+                <p>22300 Pacific Coast Hwy, Malibu, CA 90303</p>
+                <p class="phone-number"><span>Call us: </span>1 800-000-0000</p>
+            </div>
+            <div class="links">
+                <div class="socials">
+                    <a href="https://twitter.com/"><i
+                            class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/"><i
+                            class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/"><i
+                            class="fa-brands fa-instagram"></i></a>
+                </div>
+                <button onclick="location.href = '../rates/rates.html';"
+                    id="book-now">Book
+                    Now</button>
+            </div>
+            <div class="copyright">
+                <p>© 2022 by The Sandstone Hotel.</p>
+                <p>Created by Guoda A.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

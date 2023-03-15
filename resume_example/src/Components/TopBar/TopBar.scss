@@ -1,0 +1,26 @@
+.logo {
+    margin: 0;
+    color: white;
+    cursor: pointer;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #673ab7;
+    padding: 20px;
+    box-shadow: #8561c5 0px 1px 20px;
+
+    ul {
+        display: flex;
+        list-style: none;
+        gap: 40px;
+        margin: 0;
+        margin-right: 70px;
+
+        li {
+            color: white;
+            cursor: pointer;
+        }
+    }
+}

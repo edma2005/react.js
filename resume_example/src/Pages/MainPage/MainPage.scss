@@ -1,0 +1,49 @@
+.container {
+    .profile-intro {
+        display: flex;
+        margin-top: 50px;
+        margin-left: 100px;
+        gap: 20px;
+        align-items: center;
+        border-bottom: 1px solid white;
+        padding-bottom: 30px;
+
+        h2 {
+            color: white;
+        }
+
+
+        .picture {
+            background-color: white;
+            border-radius: 55%;
+            width: 105px;
+            height: 105px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    .aboutMe {
+        margin-left: 100px;
+        display: flex;
+        margin-top: 20px;
+        border-bottom: 1px solid white;
+        padding-bottom: 30px;
+
+        h3 {
+            flex: 0.2;
+        }
+
+        p {
+            flex: 1;
+            padding: 0 50px;
+        }
+    }
+}

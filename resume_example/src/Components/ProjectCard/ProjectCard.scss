@@ -1,0 +1,38 @@
+.cardContainer {
+    margin: 20px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    padding: 20px;
+    border-radius: 15px;
+    height: 400px;
+    width: 350px;
+
+    p {
+        margin: 0;
+    }
+
+    img {
+        height: 200px;
+        width: 350px;
+    }
+
+    .buttonDiv {
+        margin: 20px;
+
+        .moreButton {
+            padding: 5px 30px;
+            background-color: #673ab7;
+            color: white;
+            border-radius: 15px;
+            border: none;
+            cursor: pointer;
+
+            &:hover {
+                background-color:
+                    #8561c5;
+            }
+        }
+    }
+
+
+
+}

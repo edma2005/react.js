@@ -1,0 +1,105 @@
+:root {
+    --main-light-color: white;
+    --grey: rgb(240, 240, 240);
+    --orange: rgb(234,75,31);
+    --blue: rgb(36,129,174);
+    --blue-hover: rgb(73, 165, 211);
+    --sand: rgb(231,179,127);
+    --dark-teal: rgb(18,44,52);
+    --green: rgb(104, 150, 77);
+    --light-sand: rgb(234, 214, 194);
+    --light-transparent-bg: rgba(255, 255, 255, 0.5);
+    --empty-bg: rgba(255, 255, 255, 0);
+}
+
+body {
+    background-image: url('../pics/spacejoy-9M66C_w_ToM-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+}
+
+.loginBox {
+    border-radius: 5px;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(10px);
+    margin: 30px auto;
+    max-width: 500px;
+    padding: 20px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .thank-you {
+        display: none;
+        margin-top: 150px;
+    }
+
+
+    .loginForm, .regForm {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 300px;
+        margin-top: 30px;
+        gap: 3px;
+
+            .register-here, .back-to-login {
+                text-decoration: underline;
+                color: var(--main-light-color);
+                margin-top: 10px;
+            }
+
+            .register-here:hover, .back-to-login:hover {
+                text-decoration: none;
+            }
+
+            .input-control {
+                display: flex;
+                flex-direction: column; 
+
+                input {
+                    background-color: var(--light-transparent-bg);
+                    border: 2px solid var(--empty-bg);
+                    border-radius: 5px;
+                    display: block;
+                    padding: 10px;
+                }
+
+                input:focus {
+                outline: 0;
+                }
+
+                .error {
+                    color: var(--orange);
+                    font-size: 0.7rem;
+                    height: 13px;
+                }
+
+            }
+
+            .input-control.success {
+                input {
+                    border-color: var(--green);
+                }
+            }
+    
+            .input-control.error {
+                input {
+                    border-color: var(--orange);
+                }
+            }
+        }
+
+    .regForm {
+        display: none;
+    }
+
+}
+
+
+
+    

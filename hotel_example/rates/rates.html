@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS STYLES -->
+    <link rel="stylesheet" href="../globalstyles.css">
+    <link rel="stylesheet" href="./rates.css">
+
+    <!-- JS -->
+    <script defer src="../userauth.js"></script>
+    <!-- <script defer src="../flatpickr.js"></script> -->
+    <script defer src="./roomsrates.js"></script>
+
+
+    <!-- FONTS, ICONS -->
+    <script src="https://kit.fontawesome.com/0eb9458fd3.js"
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,400;1,200&display=swap"
+        rel="stylesheet">
+
+    <!-- FLATPICKER -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
+
+    <title>Rates</title>
+</head>
+
+<body>
+    <div class="main-container">
+        <header>
+            <nav class="navbar">
+                <a href="../home/index.html">
+                    <img class="logo" src="../pics/logo/logo-no-background.png"
+                        alt="">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="../home/index.html" class="nav-link">Home</a>
+                    </li>
+                    <li><a href="../about/about.html" class="nav-link">About
+                            us</a></li>
+                    <li><a href="../rates/rates.html" class="nav-link">Rates &
+                            Availability</a></li>
+                    <li>
+                        <button onclick="location.href = '../rates/rates.html';"
+                            id="book-now" class="nav-link">Book
+                            Now</button>
+                    </li>
+                    <li class="account">
+                        <a id="to-userpage" href="../account/account.html"
+                            class="nav-link">Account</a>
+                    </li>
+                    <li class="account">
+                        <a id="log-out" href="" class="nav-link">Log Out</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+
+            </nav>
+        </header>
+        <main>
+            <div class="content-wrapper">
+                <div class="selection-bar">
+                    <form action="
+                    " class="dateSelection">
+                        <label for="date">Select dates: </label>
+                        <input type="date" id="dateSelect" class="date">
+                        <div class="selects">
+                            <div class="adult-select">
+                                <label for="adults">Adults: </label>
+                                <select name="adults" id="adults"
+                                    class="adults">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                </select>
+                            </div>
+                            <div class="kids-select">
+                                <label for="children">Kids: </label>
+                                <select name="children" id="children"
+                                    class="children">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" id="submit">Filter</button>
+                    </form>
+                </div>
+                <div class="room-list"></div>
+            </div>
+        </main>
+        <footer>
+            <div class="address">
+                <p>22300 Pacific Coast Hwy, Malibu, CA 90303</p>
+                <p class="phone-number"><span>Call us: </span>1 800-000-0000</p>
+            </div>
+            <div class="links">
+                <div class="socials">
+                    <a href="https://twitter.com/"><i
+                            class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/"><i
+                            class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/"><i
+                            class="fa-brands fa-instagram"></i></a>
+                </div>
+                <button onclick="location.href = '../rates/rates.html';"
+                    id="book-now">Book
+                    Now</button>
+            </div>
+            <div class="copyright">
+                <p>© 2022 by The Sandstone Hotel.</p>
+                <p>Created by Guoda A.</p>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</body>
+
+</html>

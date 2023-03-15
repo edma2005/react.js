@@ -1,0 +1,12 @@
+.myProjectsContent {
+    h1 {
+        color: white;
+        padding: 20px;
+    }
+
+    .grid-table {
+        justify-items: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
